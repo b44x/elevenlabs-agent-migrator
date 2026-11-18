@@ -1,0 +1,118 @@
+{
+  "source": {
+    "agent_id": "agent_x",
+    "workspace_id": "workspace_x"
+  },
+  "agent_config": {
+    "name": "Source",
+    "conversation_config": {
+      "agent": {
+        "prompt": {
+          "prompt": "Use [procedure id=\"proc_1\"].",
+          "tool_ids": [
+            "tool_x"
+          ],
+          "knowledge_base": [
+            {
+              "id": "kb_x",
+              "name": "Hours",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "tts": {
+        "voice_id": "voice_1"
+      }
+    },
+    "platform_settings": {
+      "testing": {
+        "attached_tests": [
+          {
+            "test_id": "test_x"
+          }
+        ]
+      }
+    },
+    "workflow": {
+      "analysis_settings": {
+        "enabled": true,
+        "strict": false
+      }
+    }
+  },
+  "procedures": {
+    "proc_1": {
+      "name": "First",
+      "content": "[procedure id=\"proc_2\"]",
+      "type": "free_form",
+      "trigger": "User asks"
+    },
+    "proc_2": {
+      "name": "Second",
+      "content": "[tool id=\"tool_x\"] [kb id=\"kb_x\"]",
+      "type": "free_form",
+      "trigger": ""
+    }
+  },
+  "tools": {
+    "tool_x": {
+      "tool_config": {
+        "type": "webhook",
+        "name": "find_slots",
+        "tool_call_sound": "typing",
+        "api_schema": {
+          "method": "POST",
+          "url": "https://api.example.test/slots",
+          "request_headers": {
+            "Authorization": "[REDACTED]"
+          },
+          "path_params_schema": []
+        }
+      }
+    }
+  },
+  "tests": {
+    "test_x": {
+      "name": "Search",
+      "type": "simulation",
+      "success_conditions": [
+        "Correct"
+      ],
+      "tool_mock_overrides": {
+        "tool_x": []
+      }
+    }
+  },
+  "knowledge_text_documents": {
+    "kb_x": "9–17"
+  },
+  "source_workspace_dependencies": {
+    "post_call_webhooks": [
+      {
+        "id": "wh_x",
+        "url": "https://api.example.test/events",
+        "auth_type": "hmac"
+      }
+    ],
+    "agent_phone_bindings": [
+      {
+        "provider": "sip_trunk",
+        "phone_number": "+12025550101",
+        "inbound_trunk": {
+          "has_auth_credentials": false,
+          "allowed_addresses": [
+            "192.0.2.1"
+          ]
+        },
+        "outbound_trunk": {
+          "has_auth_credentials": true,
+          "username": "line",
+          "transport": "tcp",
+          "address": "sip.example.test"
+        },
+        "store_sip_messages": false
+      }
+    ]
+  }
+}
