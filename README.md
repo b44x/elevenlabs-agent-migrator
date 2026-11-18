@@ -10,7 +10,7 @@ tools. SIP and post-call callback migration are optional.
 Requires Python 3.11 or newer on macOS or Linux. This is an alpha release.
 
 ```sh
-pipx install elevenlabs-agent-migrator==0.1.1a0
+pipx install elevenlabs-agent-migrator==0.1.2a0
 
 elevenlabs-agent-migrator export \
   --agent-id AGENT_ID --branch-id BRANCH_ID --output "$HOME/agent-export.json"

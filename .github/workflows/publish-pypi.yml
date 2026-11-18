@@ -6,7 +6,7 @@ on:
       tag:
         description: Existing Git release tag
         required: true
-        default: v0.1.1-alpha
+        default: v0.1.2-alpha
         type: string
       publish:
         description: Upload to PyPI after validation

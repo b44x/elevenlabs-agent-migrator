@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "elevenlabs-agent-migrator"
-version = "0.1.1a0"
+version = "0.1.2a0"
 description = "Stage and verify ElevenLabs agent migrations across workspaces"
 readme = "README.md"
 requires-python = ">=3.11"
